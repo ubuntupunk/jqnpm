@@ -6,6 +6,7 @@
 - [x] Default branch detection
 - [x] jq 1.7 test compatibility
 - [x] Ubuntu 24.04 (Travis CI)
+- [x] Username/package validation, circular dep, --no-fetch
 
 ## In Progress
 
@@ -17,10 +18,10 @@
 - [x] Add fallback to HEAD when no tags satisfy semver range
 
 ### Medium Priority
-- [ ] Add username format validation (generate.sh)
-- [ ] Add package name validation (generate.sh)
-- [ ] Implement `--no-fetch` flag (install.sh)
-- [ ] Detect circular dependencies (install.sh)
+- [x] Add username format validation (generate.sh)
+- [x] Add package name validation (generate.sh)
+- [x] Implement `--no-fetch` flag (install.sh)
+- [x] Detect circular dependencies (install.sh)
 - [ ] Write unit tests per function (src/jqnpm)
 
 ### Low Priority
