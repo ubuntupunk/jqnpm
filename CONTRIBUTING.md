@@ -173,4 +173,4 @@ Patches welcome!
 
 ## Background
 
-jqpm formerly jqnpm was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.
+jqpm (formerly jqnpm) was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.
