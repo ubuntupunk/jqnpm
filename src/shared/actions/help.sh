@@ -1,7 +1,7 @@
 function help {
 	(( "$#" != 0 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
 	consoleOutputWithColors "${COLOR_WHITE}jqpm${COLOR_NO_COLOR}: npm style package manager for jq"
-	consoleOutputWithColors "${COLOR_WHITE}https://github.com/joelpurra/jqpm${COLOR_NO_COLOR}"
+	consoleOutputWithColors "${COLOR_WHITE}https://github.com/ubuntupunk/jqpm${COLOR_NO_COLOR}"
 	consoleOutputEmptyLine
 	consoleOutputWithColors "jqpm ${COLOR_WHITE}<action>${COLOR_NO_COLOR} [options]"
 	consoleOutputEmptyLine

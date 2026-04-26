@@ -1,12 +1,10 @@
 # Contributing to jqpm
 
-Thanks for your interest! jqpm is a small, focused project — contributions of any size are welcome.
+Thanks for your interest! jqpm (formerly jqnpm) is a small, focused project — contributions of any size are welcome.
 
-- [Report a bug or suggest a feature](https://github.com/jqpm/jqpm/issues)
+- [Report a bug or suggest a feature](https://github.com/ubuntupunk/jqpm/issues)
 - [Browse or add packages on the wiki](https://github.com/ubuntupunk/jqpm/wiki)
 - Read on to contribute code.
-
-
 
 ## Development setup
 
@@ -20,7 +18,7 @@ Thanks for your interest! jqpm is a small, focused project — contributions of 
 **Clone and link**
 
 ```bash
-git clone https://github.com/jqpm/jqpm.git
+git clone https://github.com/ubuntupunk/jqpm.git
 cd jqpm
 ln -s "$PWD/src/jqpm" ~/.local/bin/jqpm
 ```
@@ -175,4 +173,4 @@ Patches welcome!
 
 ## Background
 
-jqpm was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.
+jqpm formerly jqnpm was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.

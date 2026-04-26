@@ -1,16 +1,16 @@
 <p align="center">
-  <a href="https://github.com/jqpm/jqpm"><img src="https://raw.githubusercontent.com/joelpurra/jqpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqpm logotype, a Penrose triangle" width="100" border="0" /></a>
+  <a href="https://github.com/jqnpm/jqnpm"><img src="https://raw.githubusercontent.com/joelpurra/jqnpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqnpm-original logotype, a Penrose triangle" width="100" border="0" /></a>
 </p>
 
-# [jqpm](https://github.com/jqpm/jqpm) — [jq](https://jqlang.org/) package manager
+# [jqpm](https://github.com/ubuntupunk/jqpm) — [jq](https://jqlang.org/) package manager
 
 A package manager built for the command-line JSON processor [`jq`](https://jqlang.org/). Inspired by [`npm`](https://npmjs.org/), it brings namespaced packages, semantic versioning, and a local dependency tree to jq's module system.
 
 > **Note on archived packages:** The original maintainer [Joel Purra](https://joelpurra.com/) has archived his jq module repositories. They can still be cloned and used — or you can fork them and take over maintenance. We believe jq modules are an excellent way to extend jq with additional functionality for working with JSON.
 
 <p align="center">
-  <a href="https://github.com/jqpm/jqpm/">
-    <img src="https://cloud.githubusercontent.com/assets/1398544/5852881/aaefa09c-a21d-11e4-9e7b-7c2c5574e0b6.gif" alt="jqpm in action" border="0" />
+  <a href="https://github.com/jqnpm/jqnpm/">
+    <img src="https://cloud.githubusercontent.com/assets/1398544/5852881/aaefa09c-a21d-11e4-9e7b-7c2c5574e0b6.gif" alt="jqnpm in action" border="0" />
   </a>
 </p>
 
@@ -37,7 +37,7 @@ There is no build step. Clone the repository and symlink the script onto your `$
 **Linux / macOS / any Unix**
 
 ```bash
-git clone https://github.com/jqpm/jqpm.git ~/.jqpm
+git clone https://github.com/ubuntupunk/jqpm.git ~/.jqpm
 ln -s ~/.jqpm/src/jqpm ~/.local/bin/jqpm   # adjust target to any directory in $PATH
 ```
 
@@ -47,10 +47,10 @@ Verify:
 jqpm help
 ```
 
-**macOS with Homebrew** *(legacy, may be out of date)*
+**macOS with Homebrew** *(legacy, will be out of date)*
 
 ```bash
-brew install joelpurra/joelpurra/jqpm
+brew install joelpurra/joelpurra/jqnpm
 ```
 
 
