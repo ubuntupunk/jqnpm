@@ -1,4 +1,4 @@
-dist: xenial    # use Ubuntu 16.04 base image
+dist: noble    # use Ubuntu 24.04 base image
 language: bash
 
 before_install:
