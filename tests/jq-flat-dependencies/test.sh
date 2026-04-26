@@ -26,7 +26,7 @@ function testJqExecution () {
 	assertTrue "jq.json exists" "[[ -s 'local-project/jq.json' ]]"
 
 	pushd "local-project" >/dev/null
-	if jqpm install;
+	if jqnpm install;
 	then
 		local result=$("$jqCommandUnderTest" --null-input --raw-output)
 	fi

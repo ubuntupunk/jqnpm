@@ -29,11 +29,11 @@ function testJqExecution () {
 	assertFalse "Package someuser/pack2 is not installed" "[[ -d '.jq/packages/someuser/pack2/' ]]"
 
 	pushd "local-project" >/dev/null
-	jqpm install
+	jqnpm install
 	assertTrue "Package anotheruser/pack1 is installed" "[[ -d '.jq/packages/anotheruser/pack1/' ]]"
 	assertFalse "Package someuser/pack2 is not installed" "[[ -d '.jq/packages/someuser/pack2/' ]]"
 	pushd "one/two" >/dev/null
-	jqpm install "someuser/pack2"
+	jqnpm install "someuser/pack2"
 	popd >/dev/null
 	popd >/dev/null
 

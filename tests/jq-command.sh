@@ -4,7 +4,7 @@
 # Put the command in `jq-command-override.sh`.
 #
 # EXAMPLE 1
-# echo 'jqpm execute "$@"' >"jq-command-override.sh"
+# echo 'jqnpm execute "$@"' >"jq-command-override.sh"
 # chmod u+x "jq-command-override.sh"
 #
 # EXAMPLE 2
@@ -16,4 +16,4 @@
 # chmod u+x "jq-command-override.sh"
 
 # This is the current default command to interpret jq scripts.
-jqpm execute "$@"
+jqnpm execute "$@"

@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://github.com/jqnpm/jqnpm"><img src="https://raw.githubusercontent.com/joelpurra/jqnpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqnpm-original logotype, a Penrose triangle" width="100" border="0" /></a>
+  <a href="https://github.com/jqnpm/jqnpm"><img src="https://raw.githubusercontent.com/joelpurra/jqnpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqnpm logotype, a Penrose triangle" width="100" border="0" /></a>
 </p>
 
-# [jqpm](https://github.com/ubuntupunk/jqpm) — [jq](https://jqlang.org/) package manager
+# [jqnpm](https://github.com/ubuntupunk/jqnpm) — [jq](https://jqlang.org/) package manager
 
 A package manager built for the command-line JSON processor [`jq`](https://jqlang.org/). Inspired by [`npm`](https://npmjs.org/), it brings namespaced packages, semantic versioning, and a local dependency tree to jq's module system.
 
@@ -14,7 +14,7 @@ A package manager built for the command-line JSON processor [`jq`](https://jqlan
   </a>
 </p>
 
-- Uses namespaced packages — `jqpm install joelpurra/jq-stress` clones from [`github.com/joelpurra/jq-stress`](https://github.com/joelpurra/jq-stress).
+- Uses namespaced packages — `jqnpm install joelpurra/jq-stress` clones from [`github.com/joelpurra/jq-stress`](https://github.com/joelpurra/jq-stress).
 - Uses strict [semantic versioning](https://semver.org/) tags.
 - No central registry needed — packages are plain GitHub repositories.
 - Works on Linux, macOS, and anywhere bash 4+ and jq 1.5+ are available.
@@ -37,14 +37,14 @@ There is no build step. Clone the repository and symlink the script onto your `$
 **Linux / macOS / any Unix**
 
 ```bash
-git clone https://github.com/ubuntupunk/jqpm.git ~/.jqpm
-ln -s ~/.jqpm/src/jqpm ~/.local/bin/jqpm   # adjust target to any directory in $PATH
+git clone https://github.com/ubuntupunk/jqnpm.git ~/.jqnpm
+ln -s ~/.jqnpm/src/jqnpm ~/.local/bin/jqnpm   # adjust target to any directory in $PATH
 ```
 
 Verify:
 
 ```bash
-jqpm help
+jqnpm help
 ```
 
 **macOS with Homebrew** *(legacy, will be out of date)*
@@ -58,7 +58,7 @@ brew install joelpurra/joelpurra/jqnpm
 ## Usage
 
 ```bash
-jqpm help
+jqnpm help
 ```
 
 
@@ -70,22 +70,22 @@ mkdir my-project
 cd my-project/
 
 # Create jq.json, jq/main.jq, and the local .jq/ folder.
-jqpm init
+jqnpm init
 
 # Fetch a package from GitHub and install it into .jq/packages/.
-jqpm install joelpurra/jq-stress
+jqnpm install joelpurra/jq-stress
 
 # Write your jq code.
 echo 'import "joelpurra/jq-stress" as Stress; Stress::remove("e")' > jq/main.jq
 
-# Execute — jqpm passes the correct -L path to jq automatically.
-echo '"Hey there!"' | jqpm execute
+# Execute — jqnpm passes the correct -L path to jq automatically.
+echo '"Hey there!"' | jqnpm execute
 # => "Hy thr!"
 ```
 
 **Example 2 — multiple dependencies**
 
-`jq/main.jq` combining two packages after `jqpm install joelpurra/jq-zeros && jqpm install joelpurra/jq-dry`:
+`jq/main.jq` combining two packages after `jqnpm install joelpurra/jq-zeros && jqnpm install joelpurra/jq-dry`:
 
 ```jq
 import "joelpurra/jq-zeros" as Zeros;
@@ -107,14 +107,14 @@ fib(8) | Zeros::pad(4; 0)
 ```
 
 ```shell
-jqpm execute --null-input
+jqnpm execute --null-input
 ```
 
 
 
 ## How it works
 
-`jqpm execute` is a thin wrapper around `jq` that adds `-L .jq/packages` to the search path, making installed packages resolvable by name. Packages are cached in `~/.jq/cache/` and installed locally into `.jq/packages/` per project, similar to `node_modules`.
+`jqnpm execute` is a thin wrapper around `jq` that adds `-L .jq/packages` to the search path, making installed packages resolvable by name. Packages are cached in `~/.jq/cache/` and installed locally into `.jq/packages/` per project, similar to `node_modules`.
 
 Packages are fetched from GitHub by default. The full install path for `joelpurra/jq-stress` is:
 
@@ -139,7 +139,7 @@ Share your code! 💓
 1. [Create a new GitHub repository](https://github.com/new) named `jq-<your-tool>`.
 2. Scaffold it locally:
    ```bash
-   jqpm generate <github-username> jq-<your-tool> "One sentence description"
+   jqnpm generate <github-username> jq-<your-tool> "One sentence description"
    ```
 3. Write your jq code in `jq/main.jq`.
 4. Publish:
@@ -149,7 +149,7 @@ Share your code! 💓
    git tag -a v0.1.0 -m v0.1.0
    git push origin v0.1.0
    ```
-5. Add it to the [jqpm wiki package list](https://github.com/ubuntupunk/jqpm/wiki) and tell the world!
+5. Add it to the [jqnpm wiki package list](https://github.com/ubuntupunk/jqnpm/wiki) and tell the world!
 
 
 
@@ -174,4 +174,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Copyright (c) 2014, 2015, [Joel Purra](https://joelpurra.com/). All rights reserved.
 
-When using [**jqpm**](https://github.com/ubuntupunk/jqpm), comply with at least one of the three available licenses: BSD, MIT, GPL. See the `LICENSE*` files for details.
+When using [**jqnpm**](https://github.com/ubuntupunk/jqnpm), comply with at least one of the three available licenses: BSD, MIT, GPL. See the `LICENSE*` files for details.

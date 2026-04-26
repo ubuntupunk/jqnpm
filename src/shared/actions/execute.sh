@@ -1,6 +1,6 @@
 # TODO: remove execute capabilities once jq is up to speed with the package import algorithm.
-# One should not have to use `jqpm execute` when `jq` is enough.
-# https://github.com/joelpurra/jqpm/blob/master/CONTRIBUTE.md#requirements-for-the-jq-binary
+# One should not have to use `jqnpm execute` when `jq` is enough.
+# https://github.com/joelpurra/jqnpm/blob/master/CONTRIBUTE.md#requirements-for-the-jq-binary
 function jqArgumentsContainFileArgument {
   if arrayContainsValue "-f" "$@" || arrayContainsValue "--from-file" "$@" ]]; then
     return 0

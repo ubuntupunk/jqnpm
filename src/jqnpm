@@ -3,7 +3,7 @@ set -e
 
 if (( $(id -u) == 0 ));
 then
-   echo -E "jqpm: cannot be executed with root privileges." 1>&2
+   echo -E "jqnpm: cannot be executed with root privileges." 1>&2
    exit 1
 fi
 
@@ -31,7 +31,7 @@ function crossplatformReadlink {
 }
 
 # Must be executed in this file.
-# Used to recursively call jqpm and to find files to `source`.
+# Used to recursively call jqnpm and to find files to `source`.
 JQNPM_SOURCE=$(crossplatformReadlink "$BASH_SOURCE")
 
 # Helper functions
@@ -75,7 +75,7 @@ function main {
 	local action="$1"
 	(( "$#" > 0 )) && shift
 
-	# TODO: use a system like "exec jqpm-$action.sh".
+	# TODO: use a system like "exec jqnpm-$action.sh".
 	case "$action" in
 		'fetch')
 			fetch "$@"

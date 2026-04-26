@@ -1,15 +1,15 @@
 <p align="center">
-  <a href="https://github.com/joelpurra/jqpm"><img src="https://raw.githubusercontent.com/joelpurra/jqpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqpm logotype, a Penrose triangle" width="100" border="0" /></a>
+  <a href="https://github.com/joelpurra/jqnpm"><img src="https://raw.githubusercontent.com/joelpurra/jqnpm/master/resources/logotype/penrose-triangle.svg?sanitize=true" alt="jqnpm logotype, a Penrose triangle" width="100" border="0" /></a>
 </p>
 
 # [<%=FULL_PACKAGE_NAME%>](https://github.com/<%=GITHUB_USERNAME%>/<%=FULL_PACKAGE_NAME%>)
 
 <%=ONE_SENTENCE_DESCRIPTION%>
 
-This is a package for the command-line JSON processor [`jq`](https://stedolan.github.io/jq/). Install the package in your jq project/package directory with [`jqpm`](https://github.com/joelpurra/jqpm):
+This is a package for the command-line JSON processor [`jq`](https://stedolan.github.io/jq/). Install the package in your jq project/package directory with [`jqnpm`](https://github.com/joelpurra/jqnpm):
 
 ```bash
-jqpm install joelpurra/<%=FULL_PACKAGE_NAME%>
+jqnpm install joelpurra/<%=FULL_PACKAGE_NAME%>
 ```
 
 

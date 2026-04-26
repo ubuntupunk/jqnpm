@@ -16,7 +16,7 @@
     "dependencies": {},
     "engines": {
         "jq": "^1.5.0",
-        "jqpm": "^1.0.0"
+        "jqnpm": "^1.0.0"
     },
     "licenses": [
         {

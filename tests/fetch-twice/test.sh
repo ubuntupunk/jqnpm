@@ -27,9 +27,9 @@ function testFetchFromJqJson () {
 	assertTrue "jq.json has package version range" "[[ $(<"local-project/jq.json" jq '.dependencies["anotheruser/pack1"]') == '"^1.0.0"' ]]"
 
 	pushd "local-project" >/dev/null
-	jqpm fetch anotheruser/pack1
+	jqnpm fetch anotheruser/pack1
 	assertTrue "Cache is loaded" "[[ -d '../package-cache/anotheruser/pack1/' ]]"
-	jqpm fetch anotheruser/pack1
+	jqnpm fetch anotheruser/pack1
 	popd >/dev/null
 
 	assertTrue "jq.json has package version range" "[[ $(<"local-project/jq.json" jq '.dependencies["anotheruser/pack1"]') == '"^1.0.0"' ]]"

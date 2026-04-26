@@ -10,7 +10,7 @@
 *.url text
 
 ./LICENSE* text
-./src/jqpm text
+./src/jqnpm text
 
 .gitattributes text
 .gitignore text
