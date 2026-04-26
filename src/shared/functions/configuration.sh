@@ -1,6 +1,6 @@
 # TODO: normalize configuration, configuration defaults and internal variable names.
 readonly config_default_packagesCache="$HOME/.jq/cache"
-readonly config_default_remoteBase="git://github.com"
+readonly config_default_remoteBase="https://github.com"
 readonly config_default_remoteSuffix=".git"
 
 readonly config_default_GithubApiBase="https://api.github.com"
