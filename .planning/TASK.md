@@ -12,8 +12,9 @@
 ## Backlog (Priority Order)
 
 ### High Priority
-- [ ] Fix hardcoded `'master'` branch in `generate.sh` lines 102-103
-- [ ] Fix hardcoded `'origin" "master'` in `tests/create-bundles.sh` line 81
+- [x] Fix hardcoded `'master'` branch in `generate.sh` lines 102-103
+- [x] Fix hardcoded `'origin" "master'` in `tests/create-bundles.sh` line 81
+- [x] Add fallback to HEAD when no tags satisfy semver range
 
 ### Medium Priority
 - [ ] Add username format validation (generate.sh)
