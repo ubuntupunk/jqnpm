@@ -39,25 +39,30 @@ function execute {
     fi
   fi
 
+  # Collect all -L paths: main package, global ~/.jq, and all nested .jq/packages in dependencies
+  local jqLoadPathArgs="-L $localJqPackageBase -L $HOME/.jq"
+
   if hasPackageMetadataFile && hasDirectDependencies; then
+    local pkgRoot
+    pkgRoot=$(getLocalPackageRoot)
+    while IFS= read -r -d '' nestedPkg; do
+      jqLoadPathArgs="$jqLoadPathArgs -L $nestedPkg"
+    done < <(find "$pkgRoot/${localJqPackageBase}" -type d -name 'packages' -print0 2>/dev/null)
+
     if [[ "$usePackageMainJq" == "true" ]]; then
-      # Take care when editing the follow line, so debugging information and actual command stay in sync.
-      debugInPackageIfAvailable 5 "(executing jq)" jq -L "$localJqPackageBase" -L "$HOME/.jq" -f "$mainPath" "$@"
-      jq -L "$localJqPackageBase" -L "$HOME/.jq" -f "$mainPath" "$@"
+      debugInPackageIfAvailable 5 "(executing jq)" jq $jqLoadPathArgs -f "$mainPath" "$@"
+      jq $jqLoadPathArgs -f "$mainPath" "$@"
     else
-      # Take care when editing the follow line, so debugging information and actual command stay in sync.
-      debugInPackageIfAvailable 5 "(executing jq)" jq -L "$localJqPackageBase" "$@"
-      jq -L "$localJqPackageBase" "$@"
+      debugInPackageIfAvailable 5 "(executing jq)" jq $jqLoadPathArgs "$@"
+      jq $jqLoadPathArgs "$@"
     fi
+  elif [[ "$usePackageMainJq" == "true" ]]; then
+    # Take care when editing the follow line, so debugging information and actual command stay in sync.
+    debugInPackageIfAvailable 5 "(executing jq)" jq -f "$mainPath" "$@"
+    jq -f "$mainPath" "$@"
   else
-    if [[ "$usePackageMainJq" == "true" ]]; then
-      # Take care when editing the follow line, so debugging information and actual command stay in sync.
-      debugInPackageIfAvailable 5 "(executing jq)" jq -f "$mainPath" "$@"
-      jq -f "$mainPath" "$@"
-    else
-      # Take care when editing the follow line, so debugging information and actual command stay in sync.
-      debugInPackageIfAvailable 5 "(executing jq)" jq "$@"
-      jq "$@"
-    fi
+    # Take care when editing the follow line, so debugging information and actual command stay in sync.
+    debugInPackageIfAvailable 5 "(executing jq)" jq "$@"
+    jq "$@"
   fi
 }
