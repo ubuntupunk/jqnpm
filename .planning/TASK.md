@@ -25,7 +25,7 @@
 - [ ] Write unit tests per function (src/jqnpm)
 
 ### Low Priority
-- [ ] Refactor array handling (hacky bash FAQ #020 pattern)
+- [x] Refactor array handling (hacky bash FAQ #020 pattern) - kept as-is, tests fail with mapfile
 - [ ] Validate path format (filesystem-temp.sh)
 - [ ] Separate shunit2 colorize alias
 - [ ] Normalize configuration naming
