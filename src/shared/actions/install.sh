@@ -1,3 +1,16 @@
+# Track install chain for circular dependency detection
+declare -a INSTALL_CHAIN=()
+
+function checkCircularDependency {
+	local dep="$1"
+	for installed in "${INSTALL_CHAIN[@]}"; do
+		if [[ "$installed" == "$dep" ]]; then
+			die 1 "Circular dependency detected: '$dep' is already being installed in this chain: ${INSTALL_CHAIN[*]}"
+		fi
+	done
+	INSTALL_CHAIN+=("$dep")
+}
+
 function installSingle {
 	(( "$#" != 1 && "$#" != 2 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
 
@@ -22,6 +35,8 @@ function installSingle {
 	local dependencyName="${nameAndVersion[0]}"
 	local dependencySemverRange="${nameAndVersion[1]}"
 
+	checkCircularDependency "$dependencyName"
+
 	if [[ "$installGlobal" == "true" ]];
 	then
 		debugInPackageIfAvailable 5 "(installing single) '${dependencyName}@${dependencySemverRange}' globally"
@@ -30,8 +45,15 @@ function installSingle {
 	fi
 
 	# Make sure the remote repository is in the local cache.
-	# TODO: implement --no-fetch.
-	"$JQNPM_SOURCE" fetch "${dependencyName}@${dependencySemverRange}"
+	local noFetch=false
+	if [[ "$1" == "--no-fetch" ]]; then
+		noFetch=true
+		shift
+	fi
+
+	if ! $noFetch; then
+		"$JQNPM_SOURCE" fetch "${dependencyName}@${dependencySemverRange}"
+	fi
 
 	debugInPackageIfAvailable 4 "(installing) dependency '${dependencyName}'@'${dependencySemverRange}'"
 
@@ -96,15 +118,9 @@ function installFromJqJson {
 	(( "$#" != 0 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
 	requiresJqJson
 
-	debugInPackageIfAvailable 5 "(attempting install from jq.json) starting in path: $(echo -nE "$PWD" | replaceHomeWithTilde)"
+debugInPackageIfAvailable 5 "(attempting install from jq.json) starting in path: $(echo -nE "$PWD" | replaceHomeWithTilde)"
 
 	# Reads jq.json, puts files in ./jq/packages/
-	# ./jq/packages/$dependencyName/
-	# ./jq/packages/$dependencyName/jq/main.jq (and any other files in the package)
-	# Then reads ./jq/packages/$dependencyName/jq.json, and installs $subdependencies.
-	# ./jq/packages/$dependencyName/.jq/packages/$subdependency/
-	# This continues recursively.
-	# TODO: build a dependency graph to detect circular dependencies.
 
 	# TODO: this array handling feels hacky.
 	# https://mywiki.wooledge.org/BashFAQ/020

@@ -1,5 +1,15 @@
 declare -A cachedGithubUserInformation
 
+# Validate GitHub username format (1-39 chars, alphanumeric/hyphen/underscore, no leading/trailing hyphen)
+function isValidGithubUsername {
+	[[ "$1" =~ ^[a-zA-Z0-9][a-zA-Z0-9_-]{0,37}[a-zA-Z0-9]$|^[a-zA-Z0-9]$ ]]
+}
+
+# Validate jq package name (lowercase, dashes allowed, jq- prefix optional)
+function isValidPackageName {
+	[[ "$1" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$ ]]
+}
+
 function fetchGithubUserInformation {
 	(( "$#" != 1 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
 	# TODO: validate username format.
@@ -47,12 +57,20 @@ function getGithubUserHomepageUrl {
 
 function generate {
 	(( "$#" != 3 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
-	# TODO: validate username format.
 	local username="$1"
 	shift
-	# TODO: validate package name.
+
+	if ! isValidGithubUsername "$username"; then
+		die 1 "Invalid GitHub username '$username'. Use 1-39 alphanumeric characters, hyphens/underscores allowed but not at start/end."
+	fi
+
 	local packageName="$1"
 	shift
+
+	if ! isValidPackageName "$packageName"; then
+		die 1 "Invalid package name '$packageName'. Use only lowercase letters, numbers, and dashes."
+	fi
+
 	local oneSentenceDescription="$1"
 	shift
 
