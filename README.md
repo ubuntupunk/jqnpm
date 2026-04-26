@@ -6,6 +6,8 @@
 
 A package manager built for the command-line JSON processor [`jq`](https://jqlang.org/). Inspired by [`npm`](https://npmjs.org/), it brings namespaced packages, semantic versioning, and a local dependency tree to jq's module system.
 
+> **Note on archived packages:** The original maintainer [Joel Purra](https://joelpurra.com/) has archived his jq module repositories. They can still be cloned and used — or you can fork them and take over maintenance. We believe jq modules are an excellent way to extend jq with additional functionality for working with JSON.
+
 <p align="center">
   <a href="https://github.com/jqnpm/jqnpm/">
     <img src="https://cloud.githubusercontent.com/assets/1398544/5852881/aaefa09c-a21d-11e4-9e7b-7c2c5574e0b6.gif" alt="jqnpm in action" border="0" />
@@ -147,7 +149,7 @@ Share your code! 💓
    git tag -a v0.1.0 -m v0.1.0
    git push origin v0.1.0
    ```
-5. Add it to the [jqnpm wiki package list](https://github.com/jqnpm/jqnpm/wiki) and tell the world!
+5. Add it to the [jqnpm wiki package list](https://github.com/ubuntupunk/jqnpm/wiki) and tell the world!
 
 
 
