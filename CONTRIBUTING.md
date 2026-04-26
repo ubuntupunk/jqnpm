@@ -2,7 +2,7 @@
 
 Thanks for your interest! jqnpm is a small, focused project — contributions of any size are welcome.
 
-- [Report a bug or suggest a feature](https://github.com/jqnpm/jqnpm/issues)
+- [Report a bug or suggest a feature](https://github.com/ubuntupunk/jqnpm/issues)
 - [Browse or add packages on the wiki](https://github.com/ubuntupunk/jqnpm/wiki)
 - Read on to contribute code.
 
