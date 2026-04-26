@@ -57,9 +57,17 @@ function installSingle {
 	mkdir -p "$installTarget"
 
 	# Use `git archive` to copy git content instead of the repository.
+	# Archive from the resolved tag if available, otherwise HEAD.
 	pushd "$cache" >/dev/null
-	# TODO: use the right tag.
-	git archive HEAD | tar x -C "$installTarget"
+	local remote="${JQNPM_REMOTE_BASE:-$config_default_remoteBase}/${dependencyName}${JQNPM_REMOTE_SUFFIX:-$config_default_remoteSuffix}"
+	local archiveRef="HEAD"
+	if [[ -n "$dependencySemverRange" && "$dependencySemverRange" != "*" ]]; then
+		local resolvedTag
+		resolvedTag=$(getBestTagForRange "$remote" "$dependencySemverRange")
+		[[ -n "$resolvedTag" ]] && archiveRef="$resolvedTag"
+	fi
+	debugInPackageIfAvailable 4 "(installing) archiving ref '${archiveRef}' from cache to '$(echo -nE "$installTarget" | replaceHomeWithTilde)'"
+	git archive "$archiveRef" | tar x -C "$installTarget"
 	popd >/dev/null
 
 	# Make this installed package an unambiguous package root of its own.
@@ -111,7 +119,6 @@ function installFromJqJson {
 
 	for dependencyName in "${directDependencyNames[@]}";
 	do
-		# TODO: use the semantic version and match against remote repo git tags.
 		local dependencySemverRange=$(getDirectDependencyVersion "$dependencyName")
 
 		installSingle "${dependencyName}@${dependencySemverRange}"
