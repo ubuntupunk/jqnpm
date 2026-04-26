@@ -174,4 +174,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Copyright (c) 2014, 2015, [Joel Purra](https://joelpurra.com/). All rights reserved.
 
-When using [**jqpm**](https://github.com/jqpm/jqpm), comply with at least one of the three available licenses: BSD, MIT, GPL. See the `LICENSE*` files for details.
+When using [**jqpm**](https://github.com/ubuntupunk/jqpm), comply with at least one of the three available licenses: BSD, MIT, GPL. See the `LICENSE*` files for details.
