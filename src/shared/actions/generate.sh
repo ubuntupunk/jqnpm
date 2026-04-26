@@ -99,8 +99,10 @@ function generate {
 	pushd "$pluginOutputPath" >/dev/null
 	git init | replaceHomeWithTilde
 	set +e
-	git remote add -f -t 'master' -m 'master' 'origin' "$remoteWriteableRepository" &>/dev/null
-	git checkout master &>/dev/null
+	local defaultBranch
+	defaultBranch=$(getDefaultBranch 2>/dev/null || echo "main")
+	git remote add -f -t "$defaultBranch" -m "$defaultBranch" 'origin' "$remoteWriteableRepository" &>/dev/null
+	git checkout "$defaultBranch" &>/dev/null
 	git pull --rebase &>/dev/null
 	set -e
 	popd >/dev/null

@@ -18,10 +18,11 @@ function fetchSingle {
 	if [[ -n "$dependencySemverRange" && "$dependencySemverRange" != "*" ]]; then
 		debugInPackageIfAvailable 3 "Resolving best tag for '${dependencyName}'@'${dependencySemverRange}' from '${remote}'"
 		resolvedTag=$(getBestTagForRange "$remote" "$dependencySemverRange")
-		if [[ -z "$resolvedTag" ]]; then
-			die 1 "No tag found satisfying '${dependencySemverRange}' for '${dependencyName}' at '${remote}'"
+		if [[ -n "$resolvedTag" ]]; then
+			debugInPackageIfAvailable 3 "Resolved tag: '${resolvedTag}'"
+		else
+			debugInPackageIfAvailable 3 "No tags found for '${dependencySemverRange}', using HEAD"
 		fi
-		debugInPackageIfAvailable 3 "Resolved tag: '${resolvedTag}'"
 	fi
 
 	if [[ ! -d "$cache" ]]; then

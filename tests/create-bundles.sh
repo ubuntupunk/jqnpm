@@ -78,7 +78,9 @@ function createBundle {
 			fi
 			git add .
 			git commit --quiet -m "Bundle contents"
-			git push --quiet "origin" "master"
+			local defaultBranch
+			defaultBranch=$(git branch --show-current 2>/dev/null || echo "main")
+			git push --quiet "origin" "$defaultBranch"
 		popd >/dev/null
 
 		# Create a bundle from the origin repository.
