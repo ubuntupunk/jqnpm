@@ -19,7 +19,7 @@ function testInitGood () {
 	assertFalse "jq.json doesn't exist" "[[ -s 'jq-good-local-project/jq.json' ]]"
 
 	pushd "jq-good-local-project" >/dev/null
-	jqnpm init
+	jqpm init
 	popd >/dev/null
 
 	assertTrue "jq/main.jq is generated" "[[ -s 'jq-good-local-project/jq/main.jq' ]]"
@@ -28,15 +28,15 @@ function testInitGood () {
 	assertTrue "jq.json has package name same as this folder minus jq- prefix" "[[ $(<"jq-good-local-project/jq.json" jq '.name') == '"good-local-project"' ]]"
 	assertTrue "jq.json has package version" "[[ $(<"jq-good-local-project/jq.json" jq '.version') == '"0.1.0"' ]]"
 	assertTrue "jq.json has jq version" "[[ $(<"jq-good-local-project/jq.json" jq '.engines["jq"]') == '"^1.5.0"' ]]"
-	assertTrue "jq.json has jqnpm version" "[[ $(<"jq-good-local-project/jq.json" jq '.engines["jqnpm"]') == '"^1.0.0"' ]]"
+	assertTrue "jq.json has jqpm version" "[[ $(<"jq-good-local-project/jq.json" jq '.engines["jqpm"]') == '"^1.0.0"' ]]"
 }
 
 function testInitGoodWithPrefix () {
 	assertFalse "jq.json doesn't exist" "[[ -s 'good-local-project-without-jq-prefix/jq.json' ]]"
 
 	pushd "good-local-project-without-jq-prefix" >/dev/null
-	# Setting the jqnpm debug level as the check below looks for an information message.
-	local result=$(JQNPM_DEBUG_LEVEL=3 jqnpm init 2>&1)
+	# Setting the jqpm debug level as the check below looks for an information message.
+	local result=$(JQNPM_DEBUG_LEVEL=3 jqpm init 2>&1)
 	popd >/dev/null
 
 	assertTrue "jq.json has package name same as this folder" "[[ $(<"good-local-project-without-jq-prefix/jq.json" jq '.name') == '"good-local-project-without-jq-prefix"' ]]"
@@ -49,7 +49,7 @@ function singleJqInitWithBadFolderName () {
 	assertFalse "jq.json doesn't exist" "[[ -s '${dirname}/jq.json' ]]"
 
 	pushd "$dirname" >/dev/null
-	jqnpm init &>/dev/null
+	jqpm init &>/dev/null
 	local result="$?"
 	popd >/dev/null
 

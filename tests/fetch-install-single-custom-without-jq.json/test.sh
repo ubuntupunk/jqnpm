@@ -27,7 +27,7 @@ function testFetchManually () {
 	assertFalse "jq.json doesn't exist" "[[ -s 'local-project/jq.json' ]]"
 
 	pushd "local-project" >/dev/null
-	jqnpm fetch anotheruser/pack1
+	jqpm fetch anotheruser/pack1
 	popd >/dev/null
 
 	assertFalse "jq.json doesn't exist" "[[ -s 'local-project/jq.json' ]]"
@@ -41,7 +41,7 @@ function testInstallManually () {
 	assertFalse "jq.json doesn't exist" "[[ -s 'local-project/jq.json' ]]"
 
 	pushd "local-project" >/dev/null
-	jqnpm install anotheruser/pack1
+	jqpm install anotheruser/pack1
 	popd >/dev/null
 
 	assertTrue "jq.json is generated" "[[ -s 'local-project/jq.json' ]]"

@@ -13,7 +13,7 @@ function getBestNewJqJsonPath {
 	return 0;
 }
 
-# TODO: use "real" versions for jq and jqnpm.
+# TODO: use "real" versions for jq and jqpm.
 read -d '' defaultMinmalJqJson <<-'EOF' || true
 {
     "name": "TO BE REPLACED",
@@ -22,7 +22,7 @@ read -d '' defaultMinmalJqJson <<-'EOF' || true
     "dependencies": {},
     "engines": {
         "jq": "^1.5.0",
-        "jqnpm": "^1.0.0"
+        "jqpm": "^1.0.0"
     }
 }
 EOF

@@ -32,7 +32,7 @@ function testInstallRecursively () {
 	assertTrue "jq.json exists" "[[ -s 'local-project/jq.json' ]]"
 
 	pushd "local-project" >/dev/null
-	jqnpm install
+	jqpm install
 	popd >/dev/null
 
 	assertTrue "Cache is loaded" "[[ -d 'package-cache/anotheruser/pack1/' ]]"

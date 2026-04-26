@@ -1,4 +1,4 @@
-jqnpm jq package manager.
+jqpm jq package manager.
 A package manager built for jq as an example implementation.
 Copyright (C) 2014, 2015 Joel Purra <https://joelpurra.com/>
 

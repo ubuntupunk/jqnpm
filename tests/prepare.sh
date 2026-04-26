@@ -4,11 +4,11 @@ source "${BASH_SOURCE%/*}/shared-functions.sh"
 
 
 function addJqnpmDirectoryToPath {
-	# Make sure we're running the right `jqnpm`.
+	# Make sure we're running the right `jqpm`.
 	# TODO: might need to preprend ${BASH_SOURCE%/*}/ with $PWD/ to get the absolute path?
-	local jqnpmDirectory=$(resolveDirectory "${BASH_SOURCE%/*}/../src")
+	local jqpmDirectory=$(resolveDirectory "${BASH_SOURCE%/*}/../src")
 
-	export PATH="$jqnpmDirectory:$PATH"
+	export PATH="$jqpmDirectory:$PATH"
 }
 
 function selectJqCommandUnderTest {

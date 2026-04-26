@@ -50,7 +50,7 @@ function debug {
 	then
 		local messageLevelName=$(getMessageLevelName "$messageLevel")
 
-		consoleOutputSameLine "jqnpm: [${messageLevelName}]" >&2
+		consoleOutputSameLine "jqpm: [${messageLevelName}]" >&2
 		consoleOutputSameLineWithColors "\t" >&2
 		consoleOutput "$@" >&2
 	fi

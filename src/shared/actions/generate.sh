@@ -163,6 +163,6 @@ function generate {
 	consoleOutputWithColors "  ${COLOR_WHITE}5. ${COLOR_NO_COLOR} Commit your changes and push them."
 	consoleOutputWithColors "  ${COLOR_WHITE}6. ${COLOR_NO_COLOR} Create a new version tag and push it: ${COLOR_WHITE}git tag -a v${defaultPackageVersion} -m v${defaultPackageVersion} && git push origin v${defaultPackageVersion}${COLOR_NO_COLOR}"
 	consoleOutputEmptyLine
-	consoleOutputWithColors "Please read package guidelines on the jqnpm homepage."
-	consoleOutputWithColors "${COLOR_WHITE}https://github.com/joelpurra/jqnpm${COLOR_NO_COLOR}"
+	consoleOutputWithColors "Please read package guidelines on the jqpm homepage."
+	consoleOutputWithColors "${COLOR_WHITE}https://github.com/joelpurra/jqpm${COLOR_NO_COLOR}"
 }

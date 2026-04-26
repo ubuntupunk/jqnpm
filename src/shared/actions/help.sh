@@ -1,9 +1,9 @@
 function help {
 	(( "$#" != 0 )) && die 100 "not the right number of arguments to '$FUNCNAME'"
-	consoleOutputWithColors "${COLOR_WHITE}jqnpm${COLOR_NO_COLOR}: npm style package manager for jq"
-	consoleOutputWithColors "${COLOR_WHITE}https://github.com/joelpurra/jqnpm${COLOR_NO_COLOR}"
+	consoleOutputWithColors "${COLOR_WHITE}jqpm${COLOR_NO_COLOR}: npm style package manager for jq"
+	consoleOutputWithColors "${COLOR_WHITE}https://github.com/joelpurra/jqpm${COLOR_NO_COLOR}"
 	consoleOutputEmptyLine
-	consoleOutputWithColors "jqnpm ${COLOR_WHITE}<action>${COLOR_NO_COLOR} [options]"
+	consoleOutputWithColors "jqpm ${COLOR_WHITE}<action>${COLOR_NO_COLOR} [options]"
 	consoleOutputEmptyLine
 	consoleOutputWithColors "Actions:"
 	consoleOutputWithColors "  ${COLOR_WHITE}help${COLOR_NO_COLOR}"
@@ -28,7 +28,7 @@ function help {
 	consoleOutputWithColors "      ${COLOR_LIGHT_GRAY_UNDERLINE}flags for jq${COLOR_NO_COLOR}: (optional) ordinary jq flags, such as --null-input (-n)."
 	consoleOutputEmptyLine
 	consoleOutputWithColors "  ${COLOR_WHITE}generate${COLOR_NO_COLOR} <github username> <package name> \"<one sentence to describe the package>\""
-	consoleOutputWithColors "    Generate a jq/jqnpm package skeleton in a subfolder."
+	consoleOutputWithColors "    Generate a jq/jqpm package skeleton in a subfolder."
 	consoleOutputWithColors "      ${COLOR_LIGHT_GRAY_UNDERLINE}github username${COLOR_NO_COLOR}: (required) used for publishing to github."
 	consoleOutputWithColors "      ${COLOR_LIGHT_GRAY_UNDERLINE}package name${COLOR_NO_COLOR}: (required) all lowercase, separate words with a dash '-'. Example: cool-tool"
 	consoleOutputWithColors "      ${COLOR_LIGHT_GRAY_UNDERLINE}one sentence to describe the package${COLOR_NO_COLOR}: (required) a snappy package description."

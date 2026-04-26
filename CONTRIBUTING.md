@@ -1,9 +1,9 @@
-# Contributing to jqnpm
+# Contributing to jqpm
 
-Thanks for your interest! jqnpm is a small, focused project — contributions of any size are welcome.
+Thanks for your interest! jqpm is a small, focused project — contributions of any size are welcome.
 
-- [Report a bug or suggest a feature](https://github.com/ubuntupunk/jqnpm/issues)
-- [Browse or add packages on the wiki](https://github.com/ubuntupunk/jqnpm/wiki)
+- [Report a bug or suggest a feature](https://github.com/jqpm/jqpm/issues)
+- [Browse or add packages on the wiki](https://github.com/ubuntupunk/jqpm/wiki)
 - Read on to contribute code.
 
 
@@ -20,9 +20,9 @@ Thanks for your interest! jqnpm is a small, focused project — contributions of
 **Clone and link**
 
 ```bash
-git clone https://github.com/jqnpm/jqnpm.git
-cd jqnpm
-ln -s "$PWD/src/jqnpm" ~/.local/bin/jqnpm
+git clone https://github.com/jqpm/jqpm.git
+cd jqpm
+ln -s "$PWD/src/jqpm" ~/.local/bin/jqpm
 ```
 
 No build step required — edits to `src/` take effect immediately.
@@ -52,7 +52,7 @@ Code with tests is much more likely to be merged without back-and-forth. Follow 
 ./tests/all.sh
 ```
 
-To run tests against the plain `jq` binary instead of the `jqnpm execute` wrapper:
+To run tests against the plain `jq` binary instead of the `jqpm execute` wrapper:
 
 ```bash
 cd tests/
@@ -68,7 +68,7 @@ chmod u+x jq-command-override.sh
 Set `JQNPM_DEBUG_LEVEL` to increase log verbosity:
 
 ```bash
-JQNPM_DEBUG_LEVEL=4 jqnpm execute
+JQNPM_DEBUG_LEVEL=4 jqpm execute
 ```
 
 | Level | Meaning  |
@@ -93,11 +93,11 @@ export JQNPM_REMOTE_SUFFIX=".bundle"
 
 ## Architecture
 
-jqnpm is plain bash — no compiled components. Source is under `src/`:
+jqpm is plain bash — no compiled components. Source is under `src/`:
 
 ```
 src/
-  jqnpm                        # entry point; checks deps, dispatches to actions
+  jqpm                        # entry point; checks deps, dispatches to actions
   shared/
     functions/
       basic.sh                 # die, logging helpers
@@ -114,21 +114,21 @@ src/
       update.sh                # update jq.json dependencies
       validation.sh            # validate package structure
     actions/
-      execute.sh               # jqnpm execute — wraps jq with -L .jq/packages
+      execute.sh               # jqpm execute — wraps jq with -L .jq/packages
       fetch.sh                 # clone/pull package repos into ~/.jq/cache
       generate.sh              # scaffold a new package skeleton
       help.sh                  # usage text
-      initialize.sh            # jqnpm init
+      initialize.sh            # jqpm init
       install.sh               # copy from cache into .jq/packages/, recurse
 ```
 
-The key data flow for `jqnpm install <user>/<pkg>`:
+The key data flow for `jqpm install <user>/<pkg>`:
 
 1. `fetch` — `git clone https://github.com/<user>/<pkg>.git` into `~/.jq/cache/<user>/<pkg>`
 2. `install` — `git archive HEAD | tar x` into `.jq/packages/<user>/<pkg>/`
 3. Recurse into the installed package and repeat for its own `jq.json` dependencies.
 
-The key data flow for `jqnpm execute`:
+The key data flow for `jqpm execute`:
 
 1. Locate the nearest `jq.json` and `jq/main.jq`.
 2. Run `jq -L .jq/packages -f jq/main.jq [extra args]`.
@@ -139,11 +139,11 @@ The key data flow for `jqnpm execute`:
 
 - **Recursive dependency resolution** requires all dependencies to be installed at the package root. Deep/nested resolution needs further work.
 - **Semantic version matching** against git tags is not yet implemented — the latest commit on the default branch is always used.
-- `jqnpm execute` is a workaround. Once `jq` fully supports the `-L`-based resolution algorithm described below, plain `jq -L .jq/packages` will be sufficient.
+- `jqpm execute` is a workaround. Once `jq` fully supports the `-L`-based resolution algorithm described below, plain `jq -L .jq/packages` will be sufficient.
 
 
 
-## The jq module resolution algorithm jqnpm expects
+## The jq module resolution algorithm jqpm expects
 
 This is the algorithm the original author specified and which a future `jq` release should implement natively. For `import "<package>" as <alias>;`:
 
@@ -175,4 +175,4 @@ Patches welcome!
 
 ## Background
 
-jqnpm was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.
+jqpm was built to demonstrate and exercise jq's module system while it was still maturing. It is modelled on npm's conventions: namespaced packages, `jq.json` as the manifest, a local `.jq/packages/` tree, and a global cache. The core is intentionally kept in bash to remain dependency-free and portable.
